@@ -6,7 +6,6 @@
 </head>
 <body>
     <h1>クエリパラメータの表示</h1>
-    <div id="result"></div> <!-- 結果を表示するための要素 -->
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const paramsDiv = document.createElement('div');
@@ -20,7 +19,10 @@
         });
 
         // 結果を表示するための要素を取得
-        const resultDiv = document.getElementById('result');
+        const resultDiv = document.createElement('div');
+        resultDiv.id = 'result';
+        document.body.appendChild(resultDiv);
+
         const kaiheisenKbn = urlParams.get('kaiheisenKbn');
         const authKey = urlParams.get('AuthKey');
         const swKbn = urlParams.get('swKbn');
