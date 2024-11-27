@@ -1,16 +1,22 @@
-<script>
-    // URLのクエリパラメータを取得
-    const urlParams = new URLSearchParams(window.location.search);
-    
-    // パラメータを表示するための要素を作成
-    const paramsDiv = document.createElement('div');
-    paramsDiv.id = 'params';
-    document.body.appendChild(paramsDiv);
-    
-    // クエリパラメータを表示
-    urlParams.forEach((value, key) => {
-        const p = document.createElement('p');
-        p.textContent = `${key}: ${value}`;
-        paramsDiv.appendChild(p);
-    });
-</script>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>クエリパラメータ表示</title>
+</head>
+<body>
+    <h1>クエリパラメータの表示</h1>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const paramsDiv = document.createElement('div');
+        paramsDiv.id = 'params';
+        document.body.appendChild(paramsDiv);
+        
+        urlParams.forEach((value, key) => {
+            const p = document.createElement('p');
+            p.textContent = `${key}: ${value}`;
+            paramsDiv.appendChild(p);
+        });
+    </script>
+</body>
+</html>
