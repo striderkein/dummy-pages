@@ -8,17 +8,8 @@
     <h1>クエリパラメータの表示</h1>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
-        const paramsDiv = document.createElement('div');
-        paramsDiv.id = 'params';
-        document.body.appendChild(paramsDiv);
-        
-        urlParams.forEach((value, key) => {
-            const p = document.createElement('p');
-            p.textContent = `${key}: ${value}`;
-            paramsDiv.appendChild(p);
-        });
 
-        // 結果を表示するための要素を取得
+        // 結果を表示するための要素を生成
         const resultDiv = document.createElement('div');
         resultDiv.id = 'result';
         document.body.appendChild(resultDiv);
@@ -27,27 +18,25 @@
         const authKey = urlParams.get('AuthKey');
         const swKbn = urlParams.get('swKbn');
 
-        urlParams.forEach((value, key) => {
-            let content = "N/A";
-            // 条件に応じて innerText を切り替え
-            if (kaiheisenKbn === '14' && !authKey) {
-                content = 'ガス単独';
-            } else if (kaiheisenKbn === '15' && authKey) {
-                content = '電気単独';
-            } else if (kaiheisenKbn === '13' && authKey) {
-                content = '開栓開始';
-            } else if (kaiheisenKbn === '14' && swKbn === '1' && authKey) {
-                content = 'ガスSW';
-            } else if (kaiheisenKbn === '15' && swKbn === '1' && authKey) {
-                content = '電気SW';
-            } else if (kaiheisenKbn === '13' && swKbn === '1' && authKey) {
-                content = 'ガス電気SW';
-            }
+        let content = "N/A";
+        // 条件に応じて content を切り替え
+        if (kaiheisenKbn === '14' && !authKey) {
+            content = 'ガス単独';
+        } else if (kaiheisenKbn === '15' && authKey) {
+            content = '電気単独';
+        } else if (kaiheisenKbn === '13' && authKey) {
+            content = '開栓開始';
+        } else if (kaiheisenKbn === '14' && swKbn === '1' && authKey) {
+            content = 'ガスSW';
+        } else if (kaiheisenKbn === '15' && swKbn === '1' && authKey) {
+            content = '電気SW';
+        } else if (kaiheisenKbn === '13' && swKbn === '1' && authKey) {
+            content = 'ガス電気SW';
+        }
 
-            const p = document.createElement('p');
-            p.textContent = `${content}`;
-            paramsDiv.appendChild(p);
-        });
+        const p = document.createElement('p');
+        p.textContent = `${content}`;
+        paramsDiv.appendChild(p);
 
         console.log(`kaiheisenKbn: ${kaiheisenKbn}, authKey: ${authKey}, swKbn: ${swKbn}`);
     </script>
