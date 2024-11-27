@@ -6,6 +6,7 @@
 </head>
 <body>
     <h1>クエリパラメータの表示</h1>
+    <div id="result"></div> <!-- 結果を表示するための要素 -->
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const paramsDiv = document.createElement('div');
@@ -17,6 +18,27 @@
             p.textContent = `${key}: ${value}`;
             paramsDiv.appendChild(p);
         });
+
+        // 結果を表示するための要素を取得
+        const resultDiv = document.getElementById('result');
+        const kaiheisenKbn = urlParams.get('kaiheisenKbn');
+        const authKey = urlParams.get('AuthKey');
+        const swKbn = urlParams.get('swKbn');
+
+        // 条件に応じて innerText を切り替え
+        if (kaiheisenKbn === '14' && (!authKey || authKey === '')) {
+            resultDiv.innerText = 'ガス単独';
+        } else if (kaiheisenKbn === '15' && (!authKey || authKey !== '')) {
+            resultDiv.innerText = '電気単独';
+        } else if (kaiheisenKbn === '13' && (!authKey || authKey !== '')) {
+            resultDiv.innerText = '開栓開始';
+        } else if (kaiheisenKbn === '14' && swKbn === '1' && (!authKey || authKey === '')) {
+            resultDiv.innerText = 'ガスSW';
+        } else if (kaiheisenKbn === '15' && swKbn === '1' && (!authKey || authKey !== '')) {
+            resultDiv.innerText = '電気SW';
+        } else if (kaiheisenKbn === '13' && swKbn === '1' && (!authKey || authKey !== '')) {
+            resultDiv.innerText = 'ガス電気SW';
+        }
     </script>
 </body>
 </html>
