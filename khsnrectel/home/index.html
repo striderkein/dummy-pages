@@ -30,17 +30,17 @@
         urlParams.forEach((value, key) => {
             let content = "N/A";
             // 条件に応じて innerText を切り替え
-            if (kaiheisenKbn === '14' && (!authKey || authKey === '')) {
+            if (kaiheisenKbn === '14' && !authKey) {
                 content = 'ガス単独';
-            } else if (kaiheisenKbn === '15' && (!authKey || authKey !== '')) {
+            } else if (kaiheisenKbn === '15' && authKey) {
                 content = '電気単独';
-            } else if (kaiheisenKbn === '13' && (!authKey || authKey !== '')) {
+            } else if (kaiheisenKbn === '13' && authKey) {
                 content = '開栓開始';
-            } else if (kaiheisenKbn === '14' && swKbn === '1' && (!authKey || authKey === '')) {
+            } else if (kaiheisenKbn === '14' && swKbn === '1' && authKey) {
                 content = 'ガスSW';
-            } else if (kaiheisenKbn === '15' && swKbn === '1' && (!authKey || authKey !== '')) {
+            } else if (kaiheisenKbn === '15' && swKbn === '1' && authKey) {
                 content = '電気SW';
-            } else if (kaiheisenKbn === '13' && swKbn === '1' && (!authKey || authKey !== '')) {
+            } else if (kaiheisenKbn === '13' && swKbn === '1' && authKey) {
                 content = 'ガス電気SW';
             }
 
