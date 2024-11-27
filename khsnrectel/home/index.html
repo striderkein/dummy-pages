@@ -27,20 +27,27 @@
         const authKey = urlParams.get('AuthKey');
         const swKbn = urlParams.get('swKbn');
 
-        // 条件に応じて innerText を切り替え
-        if (kaiheisenKbn === '14' && (!authKey || authKey === '')) {
-            resultDiv.innerText = 'ガス単独';
-        } else if (kaiheisenKbn === '15' && (!authKey || authKey !== '')) {
-            resultDiv.innerText = '電気単独';
-        } else if (kaiheisenKbn === '13' && (!authKey || authKey !== '')) {
-            resultDiv.innerText = '開栓開始';
-        } else if (kaiheisenKbn === '14' && swKbn === '1' && (!authKey || authKey === '')) {
-            resultDiv.innerText = 'ガスSW';
-        } else if (kaiheisenKbn === '15' && swKbn === '1' && (!authKey || authKey !== '')) {
-            resultDiv.innerText = '電気SW';
-        } else if (kaiheisenKbn === '13' && swKbn === '1' && (!authKey || authKey !== '')) {
-            resultDiv.innerText = 'ガス電気SW';
-        }
+        urlParams.forEach((value, key) => {
+            let content = "N/A";
+            // 条件に応じて innerText を切り替え
+            if (kaiheisenKbn === '14' && (!authKey || authKey === '')) {
+                content = 'ガス単独';
+            } else if (kaiheisenKbn === '15' && (!authKey || authKey !== '')) {
+                content = '電気単独';
+            } else if (kaiheisenKbn === '13' && (!authKey || authKey !== '')) {
+                content = '開栓開始';
+            } else if (kaiheisenKbn === '14' && swKbn === '1' && (!authKey || authKey === '')) {
+                content = 'ガスSW';
+            } else if (kaiheisenKbn === '15' && swKbn === '1' && (!authKey || authKey !== '')) {
+                content = '電気SW';
+            } else if (kaiheisenKbn === '13' && swKbn === '1' && (!authKey || authKey !== '')) {
+                content = 'ガス電気SW';
+            }
+
+            const p = document.createElement('p');
+            p.textContent = `${content}`;
+            paramsDiv.appendChild(p);
+        });
 
         console.log(`kaiheisenKbn: ${kaiheisenKbn}, authKey: ${authKey}, swKbn: ${swKbn}`);
     </script>
