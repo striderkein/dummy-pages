@@ -20,18 +20,24 @@
 
         let content = "N/A";
         // 条件に応じて content を切り替え
-        if (kaiheisenKbn === '14' && !authKey) {
-            content = 'ガス単独';
+        if (kaiheisenKbn === '14') {
+            if (!authKey) {
+                content = 'ガス単独';
+            } else if (swKbn === '1') {
+                content = 'ガスSW';
+            }
         } else if (kaiheisenKbn === '15' && authKey) {
-            content = '電気単独';
+            if (swKbn === '1') {
+                content = '電気SW';
+            } else {
+                content = '電気単独';
+            }
         } else if (kaiheisenKbn === '13' && authKey) {
-            content = '開栓開始';
-        } else if (kaiheisenKbn === '14' && swKbn === '1' && authKey) {
-            content = 'ガスSW';
-        } else if (kaiheisenKbn === '15' && swKbn === '1' && authKey) {
-            content = '電気SW';
-        } else if (kaiheisenKbn === '13' && swKbn === '1' && authKey) {
-            content = 'ガス電気SW';
+            if (swKbn === '1') {
+                content = 'ガス電気SW';
+            } else {
+                content = '開栓開始';
+            }
         }
 
         const p = document.createElement('p');
