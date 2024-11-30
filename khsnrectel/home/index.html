@@ -2,10 +2,10 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>クエリパラメータ表示</title>
+    <title>遷移先ダミーページ</title>
 </head>
 <body>
-    <h1>クエリパラメータの表示</h1>
+    <h1>遷移先ダミーページ</h1>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
 
@@ -22,7 +22,7 @@
         // 条件に応じて content を切り替え
         if (kaiheisenKbn === '14') {
             if (!authKey) {
-                content = 'ガス単独';
+                content = '開栓単独';
             } else if (swKbn === '1') {
                 content = 'ガスSW';
             }
