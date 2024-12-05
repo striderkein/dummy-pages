@@ -25,6 +25,8 @@
                 content = '開栓単独';
             } else if (swKbn === '1') {
                 content = 'ガスSW';
+            } else {
+                content = "熱物件開栓";
             }
         } else if (kaiheisenKbn === '15' && authKey) {
             if (swKbn === '1') {
@@ -38,8 +40,6 @@
             } else {
                 content = '開栓開始';
             }
-        } else if (kaiheisenKbn === '8' && authKey) {
-            content = '熱物件開栓';
         }
 
         const p = document.createElement('p');
