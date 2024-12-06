@@ -17,16 +17,17 @@
         const kaiheisenKbn = urlParams.get('kaiheisenKbn');
         const authKey = urlParams.get('AuthKey');
         const swKbn = urlParams.get('swKbn');
+        const heatsBldKbn = urlParams.get('heatsBldKbn');
 
         let content = "N/A";
         // 条件に応じて content を切り替え
         if (kaiheisenKbn === '14') {
-            if (!authKey) {
-                content = '開栓単独';
-            } else if (swKbn === '1') {
+            if (swKbn === '1') {
                 content = 'ガスSW';
-            } else {
+            } else if (heatsBldKbn === '1') {
                 content = "熱物件開栓";
+            } else {
+                content = '開栓単独';
             }
         } else if (kaiheisenKbn === '15' && authKey) {
             if (swKbn === '1') {
